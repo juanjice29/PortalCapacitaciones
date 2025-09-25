@@ -1,0 +1,8 @@
+spring:
+  main:
+    web-application-type: reactive
+  cloud:
+    compatibility-verifier:
+      enabled: false
+jwt:
+  secret: abcdefghijklmnopqrstuvwxyz1234567890abcd

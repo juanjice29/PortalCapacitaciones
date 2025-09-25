@@ -1,0 +1,115 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #111c3a;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  gap: 1rem;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #38bdf8;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a.active,
+nav a:hover {
+  color: #38bdf8;
+}
+
+.session-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-name {
+  display: block;
+  font-weight: 600;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.session-info button {
+  background: #ef4444;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.app-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.card {
+  background: #1e293b;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.25rem;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.table th {
+  text-align: left;
+  color: #94a3b8;
+  font-weight: 600;
+}

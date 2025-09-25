@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: apigateway
+  cloud:
+    compatibility-verifier:
+      enabled: false
+    gateway:
+      default-filters:
+        - RemoveRequestHeader=Cookie
+      routes:
+        - id: usuarios-service
+          uri: ${USUARIOS_SERVICE_URI:http://usuarios-service:8081}
+          predicates:
+            - Path=/auth/**,/oauth2/**,/login/oauth2/**,/logout/**,/usuarios/**,/reportes/**
+          filters:
+            # Mantener el prefijo /auth al reenviar al servicio de usuarios
+            - RewritePath=/auth/(?<segment>.*), /auth/${segment}
+            - RewritePath=/oauth2/(?<segment>.*), /oauth2/${segment}
+            - RewritePath=/login/(?<segment>.*), /login/${segment}
+            - RewritePath=/logout/(?<segment>.*), /logout/${segment}
+            - RewritePath=/usuarios/(?<segment>.*), /usuarios/${segment}
+            - RewritePath=/reportes/(?<segment>.*), /reportes/${segment}
+        - id: cursos-service
+          uri: ${CURSOS_SERVICE_URI:http://cursos-service:8082}
+          predicates:
+            - Path=/cursos/**
+          filters:
+            - RewritePath=/cursos/(?<segment>.*), /cursos/${segment}
+        - id: usuarios-docs
+          uri: ${USUARIOS_SERVICE_URI:http://usuarios-service:8081}
+          predicates:
+            - Path=/v3/api-docs/usuarios
+          filters:
+            - SetPath=/v3/api-docs
+        - id: cursos-docs
+          uri: ${CURSOS_SERVICE_URI:http://cursos-service:8082}
+          predicates:
+            - Path=/v3/api-docs/cursos
+          filters:
+            - SetPath=/v3/api-docs
+server:
+  port: ${GATEWAY_SERVER_PORT:8080}
+
+jwt:
+  secret: ${JWT_SECRET:change-this-secret}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: usuarios
+        url: /v3/api-docs/usuarios
+      - name: cursos
+        url: /v3/api-docs/cursos

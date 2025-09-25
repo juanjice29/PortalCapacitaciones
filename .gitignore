@@ -1,0 +1,22 @@
+# Environment and sensitive overrides
+infra/.env
+
+# Build outputs
+**/build/
+**/out/
+
+# IDE files
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Archives
+*.zip
+frontend/.env*
+frontend/node_modules
+frontend/dist
+
+AGENTS.md

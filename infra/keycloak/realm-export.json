@@ -1,0 +1,146 @@
+{
+  "realm": "portal",
+  "enabled": true,
+  "registrationAllowed": false,
+  "rememberMe": true,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "verifyEmail": false,
+  "roles": {
+    "realm": [
+      {
+        "name": "admin",
+        "description": "Administrador con control total",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "portal"
+      },
+      {
+        "name": "instructor",
+        "description": "Instructor encargado de cursos",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "portal"
+      },
+      {
+        "name": "user",
+        "description": "Usuario final que consume cursos",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "portal"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "portal-usuarios",
+      "name": "Portal Usuarios",
+      "description": "Aplicacion backend de usuarios",
+      "rootUrl": "",
+      "adminUrl": "",
+      "baseUrl": "",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "usuarios-secret",
+      "redirectUris": [
+        "http://localhost:8081/login/oauth2/code/keycloak"
+      ],
+      "webOrigins": [
+        "http://localhost:8081"
+      ],
+      "publicClient": false,
+      "protocol": "openid-connect",
+      "frontchannelLogout": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "authorizationServicesEnabled": false,
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:8081/*"
+      }
+    },
+    {
+      "clientId": "portal-gateway",
+      "name": "Portal Gateway",
+      "description": "API Gateway",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "gateway-secret",
+      "redirectUris": [
+        "http://localhost:8080/login/oauth2/code/keycloak"
+      ],
+      "webOrigins": [
+        "http://localhost:8080"
+      ],
+      "publicClient": false,
+      "protocol": "openid-connect",
+      "frontchannelLogout": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "authorizationServicesEnabled": false,
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:8080/*"
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "admin@portal.com",
+      "firstName": "Admin",
+      "lastName": "Portal",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Admin123!",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "admin"
+      ]
+    },
+    {
+      "username": "instructor",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "instructor@portal.com",
+      "firstName": "Instructor",
+      "lastName": "Portal",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Instructor123!",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "instructor"
+      ]
+    },
+    {
+      "username": "usuario",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "usuario@portal.com",
+      "firstName": "Usuario",
+      "lastName": "Portal",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "Usuario123!",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "user"
+      ]
+    }
+  ]
+}
