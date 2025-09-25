@@ -4,7 +4,7 @@
 
 ##  Arquitectura General
 
-![Arquitectura](arquitectura_portal_capacitaciones.png)
+
 
 - **Frontend (React + Vite, puerto 3000)**
   - Consume API vía JWT.
@@ -29,7 +29,7 @@
 
 ### Usuarios Service
 
-![ERD Usuarios](erd_usuarios_service.png)
+
 
 - **UserEntity**
   - `id: UUID (PK)`
@@ -51,7 +51,6 @@
 
 ### Cursos Service
 
-![ERD Cursos](erd_cursos_service.png)
 
 - **CourseEntity**
   - `id: UUID (PK)`
@@ -77,3 +76,4 @@ Cada microservicio expone **Swagger UI** en su puerto:
 Desde ahí se puede navegar por todos los endpoints disponibles, probar requests y revisar los modelos DTO expuestos.
 
 ---
+
