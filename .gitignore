@@ -18,5 +18,3 @@ Thumbs.db
 frontend/.env*
 frontend/node_modules
 frontend/dist
-
-AGENTS.md

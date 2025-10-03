@@ -40,6 +40,7 @@ public class CourseService {
         courseRepository.findByCode(request.code()).ifPresent(existing -> {
             throw new BusinessRuleException("El codigo de curso ya existe");
         });
+
         CourseEntity course = CourseEntity.builder()
                 .code(request.code())
                 .title(request.title())
